@@ -1,0 +1,6 @@
+---
+# We don't want to modify permissions on existing dirs, so skip owner/group/mode.
+- name: "Ensure {{ path }} exists" # noqa risky-file-permissions
+  file:
+    path: "{{ path }}"
+    state: directory

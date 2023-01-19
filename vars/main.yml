@@ -1,0 +1,4 @@
+---
+# We need this workaround to dodge both colon escapes and warnings about jinja2
+# stuff in conditionals.
+acl_pattern: '\: \*,\*$'

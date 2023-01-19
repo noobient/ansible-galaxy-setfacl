@@ -1,0 +1,32 @@
+---
+- hosts: 127.0.0.1
+  tasks:
+    - name: Create /var/www/htdocs
+      file:
+        path: /var/www/htdocs
+        state: directory
+
+    # This is only here to test the installation of ACL
+    - include_role:
+        name: "{{ playbook_dir.split('/')[:-1] | last }}"
+      vars:
+        path: '/var/www/htdocs2'
+        acl: 'u::rwx,g::rwx,o::---,d:u::rwx,d:g::rwx,d:o::---'
+
+    - include_tasks: check.yml
+
+    - include_role:
+        name: "{{ playbook_dir.split('/')[:-1] | last }}"
+      vars:
+        path: '/var/www/htdocs'
+        acl: 'u::rwx,g::rwx,o::---,d:u::rwx,d:g::rwx,d:o::---'
+
+    - include_tasks: check.yml
+
+    - include_role:
+        name: "{{ playbook_dir.split('/')[:-1] | last }}"
+      vars:
+        path: '/var/www/htdocs'
+        acl: 'u::rwx,g::rwx,o::---,d:u::rwx,d:g::rwx,d:o::---'
+
+    - include_tasks: check.yml

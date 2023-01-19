@@ -1,0 +1,9 @@
+---
+- name: Check dir permissions
+  command:
+    cmd: getfacl /var/www/htdocs
+  changed_when: false
+  register: getfacl_htdocs
+
+- debug:
+    msg: "{{ getfacl_htdocs.stdout_lines }}"

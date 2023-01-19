@@ -1,0 +1,4 @@
+---
+- include_tasks: install.yml
+- include_tasks: dir.yml
+- include_tasks: acl.yml

@@ -1,0 +1,18 @@
+---
+# If the test returns
+#
+# <path>: *,*
+#
+# that means there won't be any changes, we check for that in acl_pattern.
+# Use wc, so that we can still check for changes, but also for failures.
+
+- name: "Check current {{ path }} ACL"
+  shell:
+    cmd: setfacl -R --test --set="{{ acl }}" "{{ path }}" | grep -v "{{ acl_pattern }}" | wc -l
+  changed_when: false
+  register: item_acl
+
+- name: "Set {{ path }} ACL"
+  command:
+    cmd: setfacl -R --set="{{ acl }}" "{{ path }}"
+  when: item_acl.stdout != '0'

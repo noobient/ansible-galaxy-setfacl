@@ -1,0 +1,7 @@
+---
+- name: Install ACL
+  package:
+    name: acl
+    state: latest
+  register: installed_acl
+  when: installed_acl is not defined
