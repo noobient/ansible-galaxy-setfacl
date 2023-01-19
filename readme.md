@@ -8,7 +8,7 @@ This role lets you set the file access control list (ACL) on the specified direc
 
 | Name | Required | Example | Description |
 |---|---|---|---|
-| `path` | yes | `Hello world!` | Directory to apply the ACL on. |
+| `path` | yes | `/var/www/html` | Directory to apply the ACL on. |
 | `acl` | yes | `u::rwx,g::rwx,o::---,d:u::rwx,d:g::rwx,d:o::---` | ACL to apply on the directory. |
 
 ## Examples
