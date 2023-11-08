@@ -12,7 +12,7 @@
   changed_when: false
   register: item_acl
 
-- name: "Set {{ path }} ACL"
+- name: "Set {{ path }} ACL" # noqa no-changed-when
   command:
     cmd: setfacl -R --set="{{ acl }}" "{{ path }}"
   when: item_acl.stdout != '0'
