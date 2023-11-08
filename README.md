@@ -15,7 +15,7 @@ This role lets you set the file access control list (ACL) on the specified direc
 
 ```yml
 - include_role:
-    name: bviktor.setfacl
+    name: noobient.setfacl
   vars:
     path: '/var/www/htdocs'
     acl: 'u::rwx,g::rwx,o::---,d:u::rwx,d:g::rwx,d:o::---'
